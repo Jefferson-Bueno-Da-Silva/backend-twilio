@@ -12,6 +12,8 @@ require('dotenv').load();
 const express = require('express');
 const http = require('http');
 const path = require('path');
+var cors = require('cors');
+
 const { jwt: { AccessToken } } = require('twilio');
 
 const VideoGrant = AccessToken.VideoGrant;
@@ -21,7 +23,7 @@ const MAX_ALLOWED_SESSION_DURATION = 14400;
 
 // Create Express webapp.
 const app = express();
-
+app.use(cors());
 // Set up the paths for the examples.
 [
   'bandwidthconstraints',
