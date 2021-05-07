@@ -106,6 +106,8 @@ async function selectAndJoinRoom(error = null) {
     // Add the specified video device ID to ConnectOptions.
     connectOptions.video.deviceId = { exact: deviceIds.video };
 
+    // ** IMPORTANTE ELE QUEM FAZ A CONEXÃO **
+
     // Join the Room.
     await joinRoom(token, connectOptions);
 
