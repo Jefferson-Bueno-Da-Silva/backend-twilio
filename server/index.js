@@ -24,6 +24,7 @@ const MAX_ALLOWED_SESSION_DURATION = 14400;
 // Create Express webapp.
 const app = express();
 app.use(cors());
+
 // Set up the paths for the examples.
 [
   'bandwidthconstraints',
