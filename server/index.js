@@ -23,40 +23,16 @@ const MAX_ALLOWED_SESSION_DURATION = 14400;
 // Create Express webapp.
 const app = express();
 
-// Set up the paths for the examples.
-[
-  'bandwidthconstraints',
-  'codecpreferences',
-  'dominantspeaker',
-  'localvideofilter',
-  'localvideosnapshot',
-  'mediadevices',
-  'networkquality',
-  'reconnection',
-  'screenshare',
-  'localmediacontrols',
-  'remotereconnection',
-  'datatracks',
-
-].forEach(example => {
-  const examplePath = path.join(__dirname, `../examples/${example}/public`);
-  app.use(`/${example}`, express.static(examplePath));
+/**
+ * Default to the Quick Start application.
+ */
+ app.get('/', (request, response) => {
+  response.redirect('/quickstart');
 });
 
 // Set up the path for the quickstart.
 const quickstartPath = path.join(__dirname, '../quickstart/public');
 app.use('/quickstart', express.static(quickstartPath));
-
-// Set up the path for the examples page.
-const examplesPath = path.join(__dirname, '../examples');
-app.use('/examples', express.static(examplesPath));
-
-/**
- * Default to the Quick Start application.
- */
-app.get('/', (request, response) => {
-  response.redirect('/quickstart');
-});
 
 // Create http server and run it.
 const server = http.createServer(app);

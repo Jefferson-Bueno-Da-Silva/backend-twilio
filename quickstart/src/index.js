@@ -1,6 +1,7 @@
 'use strict';
 
 const { isSupported } = require('twilio-video');
+const axios = require('axios');
 
 const { isMobile } = require('./browser');
 const joinRoom = require('./joinroom');
@@ -84,10 +85,17 @@ async function selectAndJoinRoom(error = null) {
 
   try {
     // Fetch an AccessToken to join the Room.
-    const response = await fetch(`/token?identity=${identity}`);
-
+    // const response = await fetch(`/token?identity=${identity}`);
+    var config = {
+      method: 'get',
+      url: `http://localhost:3333/token?identity=${identity}`,
+      headers: { }
+    };
+    const response = (await axios(config)
+      .then( (response) => response.data )
+    );
     // Extract the AccessToken from the Response.
-    const token = await response.text();
+    const token = await response;
 
     // Add the specified audio device ID to ConnectOptions.
     connectOptions.audio = { deviceId: { exact: deviceIds.audio } };
