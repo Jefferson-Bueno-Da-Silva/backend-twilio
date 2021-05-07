@@ -22,6 +22,7 @@ app.use(cors());
  */
 app.get('/token', function(request, response) {
   const { identity } = request.query;
+  console.log(identity);
 
   // Create an access token which we will sign and return to the client,
   // containing the grant we just created.

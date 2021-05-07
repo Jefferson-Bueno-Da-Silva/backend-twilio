@@ -39,7 +39,15 @@ function randomName() {
  * @returns {Promise<{identity: string, token: string}>}
  */
 async function getRoomCredentials(identity = randomName()) {
-  const response = await fetch(`/token?identity=${identity}`);
+  // const response = await fetch(`/token?identity=${identity}`);
+  var config = {
+    method: 'get',
+    url: `http://localhost:3333/token?identity=${identity}`,
+    headers: { }
+  };
+  const response = (await axios(config)
+    .then( (response) => response.data )
+  );
   const token = await response.text();
   return { identity, token };
 }
