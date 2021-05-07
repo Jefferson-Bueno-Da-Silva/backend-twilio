@@ -4,9 +4,10 @@
   "description": "Twilio Video SDK Quick Start for JavaScript",
   "main": "index.js",
   "scripts": {
-    "build": "browserify quickstart/src/index.js > quickstart/public/index.js",
-    "clean": "rimraf quickstart/public/index.js",
-    "start": "npm run clean && npm run build && nodemon server"
+    "build": "browserify frontend/quickstart/src/index.js > frontend/quickstart/public/index.js",
+    "clean": "rimraf frontend/quickstart/public/index.js",
+    "front": "npm run clean && npm run build && nodemon frontend/server",
+    "back": " nodemon backend/server"
   },
   "repository": {
     "type": "git",
